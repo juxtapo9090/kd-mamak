@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Restoran Kracked Maju</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Caveat:wght@500;700&family=Space+Mono:wght@400;700&family=VT323&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+:root{
+  --wall:#1f2a24; --tile-line:#2b3a32; --night:#0b0f0d; --neon:#44ff89; --neon-dim:#0da344;
+  --red:#d7263d; --stool:#c81d25; --steel:#b9c0c4; --steel-dark:#7d868b;
+  --paper:#fbf8ef; --ink:#1d1d1d; --amber:#f5b544; --blue:#7fb2ff; --tv:#0e1a12;
+  --menu:#fff3c4; --menu-edge:#e6a700;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--night);color:var(--ink);font-family:"Space Mono",monospace;overflow-x:hidden}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+
+/* ── the night street + shopfront ── */
+.street{position:relative;padding:28px 16px 0;background:
+  radial-gradient(1200px 300px at 50% 0,#17261d 0,transparent 70%),var(--night)}
+.sign{max-width:1100px;margin:0 auto;background:#111;border:6px solid #2a2a2a;border-radius:10px;
+  padding:18px 16px 14px;text-align:center;box-shadow:0 0 0 2px #000,0 20px 60px #000a}
+.sign h1{margin:0;font-family:"Bungee Shade",cursive;font-weight:400;font-size:clamp(28px,6vw,68px);
+  color:var(--neon);text-shadow:0 0 6px var(--neon),0 0 24px var(--neon-dim),0 0 48px var(--neon-dim);letter-spacing:1px}
+.sign h1 .dead{animation:dead 7s infinite steps(1)}
+@keyframes dead{0%,100%{opacity:1}31%{opacity:.15}32%{opacity:1}33%{opacity:.1}34%{opacity:1}77%{opacity:.2}78%{opacity:1}}
+.sign .sub{font-family:"Bungee",cursive;color:#ff6a6a;font-size:clamp(13px,2.2vw,20px);
+  text-shadow:0 0 8px #ff3b3b;margin-top:6px}
+.sign .tiny{color:#9fb3a6;font-size:12px;margin-top:8px}
+.awning{max-width:1140px;margin:0 auto;height:34px;background:repeating-linear-gradient(90deg,var(--red) 0 46px,#fff 46px 92px);
+  border-radius:0 0 18px 18px;box-shadow:0 10px 20px #0008}
+
+/* ── inside the shop ── */
+.shop{position:relative;color:#cfdcd3;background:
+  radial-gradient(ellipse 900px 520px at 50% 0,#e9fff21f,#0000 70%),
+  radial-gradient(ellipse 140% 90% at 50% 40%,#0000 55%,#000a),
+  repeating-linear-gradient(0deg,var(--tile-line) 0 2px,transparent 2px 40px),
+  repeating-linear-gradient(90deg,var(--tile-line) 0 2px,transparent 2px 40px),var(--wall);
+  padding:40px 16px 80px;min-height:100vh}
+.tube{position:absolute;left:50%;top:10px;transform:translateX(-50%);width:min(520px,70vw);height:12px;border-radius:8px;
+  background:#f4fff8;box-shadow:0 0 18px 6px #e9fff2,0 0 120px 40px #e9fff255;animation:flick 9s infinite}
+@keyframes flick{0%,100%{opacity:1}12%{opacity:.6}12.5%{opacity:1}13%{opacity:.4}13.6%{opacity:1}64%{opacity:.85}}
+.grid{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:start}
+@media (max-width:860px){.grid{grid-template-columns:1fr}}
+
+/* ── the TV ── */
+.tvwrap{position:relative}
+.bracket{width:80px;height:26px;margin:0 auto;background:var(--steel-dark);border-radius:4px 4px 0 0}
+.tv{background:#222;border-radius:18px;padding:16px;box-shadow:0 18px 40px #0006,inset 0 0 0 3px #3a3a3a}
+.screen{position:relative;background:var(--tv);border-radius:12px;height:340px;overflow:hidden;color:#d9ffe6;
+  font-family:"VT323",monospace;font-size:20px;box-shadow:inset 0 0 60px #000}
+.screen::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,#0000 0 2px,#0003 2px 4px);mix-blend-mode:multiply}
+.screen .ch{position:absolute;inset:0;padding:14px 16px;display:none}
+.screen .ch.on{display:block}
+.osd{position:absolute;top:8px;right:12px;color:var(--neon);font-size:26px;z-index:3;text-shadow:0 0 6px var(--neon)}
+.live{display:inline-block;background:var(--red);color:#fff;padding:0 6px;margin-right:8px}
+.race .row{display:grid;grid-template-columns:150px 1fr 60px;align-items:center;gap:8px;margin:5px 0}
+.race .bar{height:16px;background:linear-gradient(90deg,var(--neon-dim),var(--neon));width:0;transition:width 1.6s cubic-bezier(.2,.8,.2,1)}
+.race .name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.commentary{position:absolute;left:0;right:0;bottom:0;background:#000c;padding:6px 14px;color:var(--amber)}
+.weather .map{display:grid;grid-template-columns:repeat(2,1fr);gap:4px 18px;margin-top:6px}
+.weather .presenter{color:var(--blue)}
+.news .ticker{position:absolute;left:0;right:0;bottom:0;background:var(--red);color:#fff;white-space:nowrap;overflow:hidden;padding:4px 0}
+.news .ticker span{display:inline-block;padding-left:100%;animation:tick 40s linear infinite}
+@keyframes tick{to{transform:translateX(-100%)}}
+.news ul{margin:6px 0 0;padding-left:18px;max-height:250px;overflow:auto}
+.news li{margin:2px 0}
+.static{position:absolute;inset:0;z-index:4;display:none;background:
+  repeating-radial-gradient(circle at 30% 40%,#fff3 0 1px,#0000 1px 3px),#555;animation:snow .1s infinite}
+@keyframes snow{50%{background-position:3px 5px}}
+.remote{display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap}
+.remote button{background:#333;color:#eee;border:0;border-radius:20px;padding:6px 14px;box-shadow:0 3px 0 #111}
+.remote button:active{transform:translateY(2px);box-shadow:0 1px 0 #111}
+.remote button.on{background:var(--neon-dim);color:#fff}
+.raidclock{font-family:"VT323",monospace;text-align:center;margin-top:10px;font-size:22px;color:#cfdcd3}
+.raidclock b{color:#ff6a6a}
+
+/* ── the menu ── */
+.menu{perspective:1200px}
+.menu .card{position:relative;transform-style:preserve-3d;transition:transform .8s}
+.menu.flipped .card{transform:rotateY(180deg)}
+.face,.ledger,.order,.receipt{color:var(--ink)}
+.face{backface-visibility:hidden;background:var(--menu);border:10px solid var(--menu-edge);border-radius:14px;padding:18px 18px 14px;
+  box-shadow:0 14px 30px #0004;background-image:linear-gradient(135deg,#ffffff55,#0000 40%)}
+.face.back{position:absolute;inset:0;transform:rotateY(180deg);background:#f2efe6;border-color:#bdbdbd}
+.face h2{font-family:"Bungee",cursive;font-weight:400;margin:0 0 10px;color:var(--red);font-size:26px;text-align:center}
+.dish{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:2px dotted #e2c15a;text-decoration:none}
+.dish:hover{background:#ffe48a}
+.dish .n{font-weight:700}
+.dish .d{font-size:12px;color:#5b4a00}
+.dish .p{font-family:"Bungee",cursive;color:var(--red);white-space:nowrap}
+.flipbtn{margin-top:10px;width:100%;background:none;border:2px dashed #a07a00;padding:6px;border-radius:8px}
+.back .old{font-family:"Space Mono";color:#555;position:relative}
+.back .old div{padding:8px 0;border-bottom:1px solid #ccc}
+.back .strike{position:absolute;inset:-10px;pointer-events:none}
+.back .scrawl{font-family:"Permanent Marker",cursive;color:var(--red);font-size:22px;transform:rotate(-6deg);text-align:center;margin-top:14px}
+
+/* ── regulars (tables) ── */
+section.block{max-width:1140px;margin:46px auto 0}
+.label{display:inline-block;font-family:"Bungee",cursive;background:#f4fff8;color:var(--ink);box-shadow:0 0 18px #e9fff244;padding:4px 12px;border-radius:6px;font-size:18px}
+.tables{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:22px;margin-top:16px}
+.table{position:relative;background:radial-gradient(circle at 40% 35%,#c9d0d3,#8f989d 60%,#4f575b);
+  border-radius:50%;aspect-ratio:1;display:grid;place-items:center;box-shadow:0 12px 0 -4px #0003}
+.table .glass{font-size:30px}
+.seat{position:absolute;width:62px;height:62px;border-radius:50%;background:var(--stool);display:grid;place-items:center;
+  box-shadow:0 5px 0 #8d1218;cursor:pointer;transition:transform .15s}
+.seat:hover{transform:scale(1.12);z-index:5}
+.seat img{width:48px;height:48px;border-radius:50%;object-fit:cover;background:#fff}
+.seat .rk{position:absolute;bottom:-6px;right:-6px;background:var(--ink);color:#fff;font-size:11px;padding:1px 5px;border-radius:8px}
+.tip{position:fixed;z-index:50;pointer-events:none;display:none}
+
+/* ── dev card (shared by tooltip + receipt) ── */
+.devcard{width:220px;border-radius:12px;padding:10px;color:#fff;font-family:"Space Mono";font-size:11px;
+  background:linear-gradient(160deg,#16261c,#060b08);border:3px solid var(--neon-dim);box-shadow:0 10px 30px #000a}
+.devcard.WATER{border-color:var(--blue)} .devcard.FIRE{border-color:#ff6a3d} .devcard.EARTH{border-color:#b98b4e} .devcard.VOLT{border-color:var(--amber)}
+.devcard .top{display:flex;justify-content:space-between;color:#9fb3a6}
+.devcard .nm{font-family:"Bungee",cursive;font-size:17px;margin:6px 0 2px;word-break:break-all}
+.devcard .pic{height:90px;border-radius:8px;margin:6px 0;background:#0d1a12 center/cover no-repeat;display:grid;place-items:center;font-size:40px}
+.devcard .stats{display:grid;grid-template-columns:1fr 1fr;gap:2px 8px}
+.devcard .ser{margin-top:6px;color:#9fb3a6;display:flex;justify-content:space-between}
+
+/* ── buku hutang ── */
+.ledger{background:#fffdf6;border-radius:6px;padding:22px 24px 22px 64px;position:relative;margin-top:16px;
+  background-image:linear-gradient(90deg,#0000 48px,#f19999 48px 50px,#0000 50px),repeating-linear-gradient(#0000 0 33px,#a9c7e8 33px 34px);
+  font-family:"Caveat",cursive;font-size:24px;box-shadow:0 10px 24px #0003;max-width:760px}
+.ledger .ln{display:flex;justify-content:space-between;height:34px;align-items:end}
+.ledger .ln a{text-decoration:none}
+.ledger .tot{font-weight:700;border-top:2px solid #444;margin-top:4px}
+.ledger .blank{color:#888;border-bottom:2px dashed #888}
+
+/* ── order + receipt ── */
+.counter{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;margin-top:16px}
+@media (max-width:860px){.counter{grid-template-columns:1fr}}
+.order{background:#fff;border-radius:14px;padding:20px;box-shadow:0 10px 24px #0002}
+.order .boss{font-family:"Caveat",cursive;font-size:28px}
+.order input{width:100%;font:inherit;font-size:18px;padding:10px;border:3px solid var(--ink);border-radius:8px;margin:8px 0}
+.order .row{display:flex;gap:10px;flex-wrap:wrap}
+.kira{font-family:"Bungee",cursive;font-size:24px;background:var(--red);color:#fff;border:0;border-radius:10px;padding:12px 18px;
+  box-shadow:0 6px 0 #7d0f1b;flex:1}
+.kira:active{transform:translateY(4px);box-shadow:0 2px 0 #7d0f1b}
+.kira:disabled{opacity:.6}
+.waiter{min-height:52px;font-family:"Caveat",cursive;font-size:24px;color:#355;margin-top:8px}
+.printer{position:relative;background:#2b2b2b;border-radius:14px 14px 4px 4px;height:46px;box-shadow:0 8px 20px #0005}
+.printer::after{content:"";position:absolute;left:10%;right:10%;bottom:8px;height:6px;background:#000;border-radius:4px}
+.paper{margin:-8px auto 0;width:min(340px,100%);overflow:hidden;max-height:0;transition:max-height .25s linear}
+.receipt{background:var(--paper);padding:16px 14px 26px;font-family:"Space Mono";font-size:12.5px;color:#222;
+  -webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 10px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/16px 10px repeat-x;
+  mask:linear-gradient(#000 0 0) top/100% calc(100% - 10px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/16px 10px repeat-x}
+.receipt .c{text-align:center}
+.receipt .l{display:flex;justify-content:space-between;gap:8px}
+.receipt hr{border:0;border-top:1px dashed #555;margin:8px 0}
+.receipt .big{font-size:20px;font-weight:700}
+.receipt .devcard{margin:10px auto}
+.receipt .bar{height:36px;margin:8px 0;background:repeating-linear-gradient(90deg,#222 0 2px,#0000 2px 4px,#222 4px 5px,#0000 5px 8px,#222 8px 11px,#0000 11px 12px)}
+.after{display:none;gap:10px;justify-content:center;margin-top:12px;flex-wrap:wrap}
+.after a,.after button{background:var(--ink);color:#fff;border:0;border-radius:8px;padding:8px 14px;text-decoration:none;font-size:14px}
+.after .join{background:var(--neon-dim)}
+
+/* ── lipas (Morris Worm) ── */
+#lipas{position:fixed;z-index:40;width:46px;height:46px;cursor:crosshair;left:-100px;top:-100px;transition:none}
+#lipas svg{width:100%;height:100%;filter:drop-shadow(0 3px 2px #0006)}
+#splat{position:fixed;z-index:39;pointer-events:none;font-family:"Bungee";color:var(--red);font-size:22px}
+.lipasboard{position:fixed;right:12px;bottom:12px;z-index:41;background:#111d;color:#fff;font-family:"VT323";font-size:18px;padding:6px 12px;border-radius:8px}
+
+/* ── banners + boring mode ── */
+.banner{display:none;background:#ffde59;color:#000;text-align:center;padding:8px 12px;font-weight:700;border-bottom:3px solid #000}
+.banner.err{display:block;background:var(--red);color:#fff}
+.esc{position:fixed;left:12px;bottom:12px;z-index:41;background:#fff;border:2px solid #000;border-radius:8px;padding:4px 10px;font-size:12px}
+#boring{display:none;max-width:760px;margin:0 auto;padding:24px 16px;background:#fff;font-family:system-ui,sans-serif;line-height:1.5}
+body.boring #stall,body.boring #lipas,body.boring .lipasboard{display:none}
+body.boring #boring{display:block}
+body.boring{background:#fff}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+footer{text-align:center;color:#8a9a90;font-size:12px;margin-top:60px}
+</style>
+</head>
+<body>
+<div class="banner" id="banner"></div>
+<button class="esc" id="escBtn" title="Esc">[ESC] mode bosan</button>
+
+<div id="stall">
+  <div class="street">
+    <div class="sign">
+      <h1>RESTORAN KRACKED <span class="dead">M</span>AJU</h1>
+      <div class="sub">★ 24 JAM ★ SHIP SAMPAI SUBUH ★</div>
+      <div class="tiny">WiFi: <b>krackeddevs</b> · password: <b>shipit123</b> · Est. Malaysia · Builder ecosystem sejak dulu</div>
+    </div>
+    <div class="awning"></div>
+  </div>
+
+  <main class="shop">
+    <div class="tube"></div>
+    <div class="grid">
+      <!-- TV -->
+      <div class="tvwrap">
+        <div class="bracket"></div>
+        <div class="tv">
+          <div class="screen" id="screen">
+            <div class="osd" id="osd">CH 1</div>
+            <div class="static" id="static"></div>
+            <div class="ch race on" id="ch1">
+              <div><span class="live">LIVE</span>PIALA COMMIT 30 HARI · Liga KD</div>
+              <div id="raceRows"></div>
+              <div class="commentary" id="commentary">Pengulas sedang minum teh...</div>
+            </div>
+            <div class="ch weather" id="ch2">
+              <div><span class="live">2AM</span>RAMALAN CUACA BUILDER</div>
+              <div class="presenter" id="presenter"></div>
+              <div class="map" id="wxMap"></div>
+            </div>
+            <div class="ch news" id="ch3">
+              <div><span class="live">BERITA</span>APA JADI DEKAT KD</div>
+              <ul id="newsList"></ul>
+              <div class="ticker"><span id="ticker"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="remote" role="group" aria-label="Alat kawalan jauh TV">
+          <button data-ch="1" class="on">⚽ Bola Git</button>
+          <button data-ch="2">⛈ Cuaca</button>
+          <button data-ch="3">📰 Berita</button>
+          <button data-ch="kick" title="Tepuk TV">👋 Tepuk TV</button>
+        </div>
+        <div class="raidclock">Lipas besar (Morris Worm) dijangka keluar dalam <b id="raidCd">--</b> · <a href="https://krackeddevs.com/raid" target="_blank" rel="noopener">/raid</a></div>
+      </div>
+
+      <!-- MENU -->
+      <div class="menu" id="menu">
+        <div class="card">
+          <div class="face front">
+            <h2>MENU</h2>
+            <a class="dish" href="https://krackeddevs.com/events" target="_blank" rel="noopener"><span><span class="n">Roti Canai Vibe Coding 101</span><br><span class="d">Workshop. Telur? Boleh. Kosong pun sedap.</span></span><span class="p" id="pEvents">RM0</span></a>
+            <a class="dish" href="https://krackeddevs.com/code/bounty" target="_blank" rel="noopener"><span><span class="n">Nasi Lemak Bounty Special</span><br><span class="d">Siap sambal. Hunter dah sapu <b id="dBounty">RM—</b>.</span></span><span class="p">HADIAH</span></a>
+            <a class="dish" href="https://krackeddevs.com/leaderboard" target="_blank" rel="noopener"><span><span class="n">Teh Tarik XP</span><br><span class="d">Tarik tinggi, naik level. Leaderboard panas.</span></span><span class="p">+XP</span></a>
+            <a class="dish" href="https://krackeddevs.com/raid" target="_blank" rel="noopener"><span><span class="n">Maggi Goreng Raid Malam Ahad</span><br><span class="d">9 malam. Semua ahli bantai boss sama-sama.</span></span><span class="p">PVE</span></a>
+            <a class="dish" href="https://krackeddevs.com/guilds" target="_blank" rel="noopener"><span><span class="n">Mee Goreng Guild</span><br><span class="d">25 guild. Hang TuAI: "Vibe Dulu, Debug Kemudian."</span></span><span class="p">JOIN</span></a>
+            <a class="dish" href="https://krackeddevs.com/map" target="_blank" rel="noopener"><span><span class="n">Milo Dinosaur Peta Tech</span><br><span class="d">Dev seluruh Malaysia, Perlis sampai Labuan.</span></span><span class="p">TAPAU</span></a>
+            <a class="dish" href="https://krackeddevs.com/showcase" target="_blank" rel="noopener"><span><span class="n">Murtabak Showcase</span><br><span class="d">Projek yang dah ship. Tebal, berinti.</span></span><span class="p">SHIP</span></a>
+            <button class="flipbtn" id="flip">↻ terbalikkan menu</button>
+          </div>
+          <div class="face back">
+            <h2 style="color:#777">MENU LAMA</h2>
+            <div class="old">
+              <div>01 · Learn.</div><div>02 · Build.</div><div>03 · Ship.</div>
+              <div>Three ways into KD</div><div>Partner logo wall</div><div>Cafe &amp; Co-working (coming soon)</div>
+              <svg class="strike" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M3 8 L97 92 M97 10 L4 90" stroke="#d7263d" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
+            </div>
+            <div class="scrawl">menu lama — dah tak jual 🙅</div>
+            <button class="flipbtn" id="flipBack">↻ balik menu baru</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REGULARS -->
+    <section class="block" aria-labelledby="regLbl">
+      <span class="label" id="regLbl">PELANGGAN TETAP · TOP 30 XP</span>
+      <p style="margin:8px 0 0">Duduk sini tiap malam. Hover untuk tengok kad. Snapshot: <span id="snapAt">—</span></p>
+      <div class="tables" id="tables"></div>
+    </section>
+
+    <!-- LEDGER -->
+    <section class="block" aria-labelledby="ledLbl">
+      <span class="label" id="ledLbl">BUKU HUTANG · BOUNTY HUNTER</span>
+      <p style="margin:8px 0 0">Bukan hutang. Ini duit yang KD dah bayar kepada hunter.</p>
+      <div class="ledger" id="ledger"></div>
+    </section>
+
+    <!-- ORDER -->
+    <section class="block" aria-labelledby="ordLbl">
+      <span class="label" id="ordLbl">ORDER DI KAUNTER</span>
+      <div class="counter">
+        <div class="order">
+          <div class="boss">"Boss, nama apa? Username KD atau GitHub."</div>
+          <input id="who" placeholder="cth: Juxtapo, torvalds..." autocomplete="off" spellcheck="false">
+          <div class="row">
+            <button class="kira" id="kira">BOSS, KIRA!</button>
+          </div>
+          <div class="waiter" id="waiter"></div>
+        </div>
+        <div>
+          <div class="printer"></div>
+          <div class="paper" id="paper"><div class="receipt" id="receipt"></div></div>
+          <div class="after" id="after">
+            <button id="savePng">💾 Simpan resit (PNG)</button>
+            <a class="join" href="https://krackeddevs.com" target="_blank" rel="noopener">Masuk KD betul-betul →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>Konsep untuk bounty "Reimagine our landing page" Kracked Devs · bukan laman rasmi · data dari API awam KD (snapshot)<br>
+      Dibuat oleh Juxtapo &amp; Celeste, pukul 2 pagi, dengan teh o ais.</footer>
+  </main>
+</div>
+
+<!-- Morris Worm, the cockroach -->
+<div id="lipas" title="Morris Worm — tepuk!" role="button" aria-label="Lipas Morris Worm">
+  <svg viewBox="0 0 60 60"><g fill="#5b2c12" stroke="#2c1407" stroke-width="1.2">
+    <path d="M12 22 L2 14 M12 30 L1 30 M12 38 L2 46 M48 22 L58 14 M48 30 L59 30 M48 38 L58 46" stroke-width="2.2" fill="none"/>
+    <ellipse cx="30" cy="33" rx="15" ry="21"/><ellipse cx="30" cy="12" rx="9" ry="7" fill="#3d1d0b"/>
+    <path d="M26 7 Q18 -6 6 0 M34 7 Q42 -6 54 0" fill="none" stroke-width="1.4"/>
+    <path d="M30 18 L30 52" stroke="#2c1407"/><text x="30" y="38" font-size="7" fill="#ffb37a" stroke="none" text-anchor="middle" font-family="monospace">MW</text></g></svg>
+</div>
+<div id="splat"></div>
+<div class="lipasboard" id="lipasBoard">lipas ditepuk: 0</div>
+
+<div class="tip" id="tip"></div>
+
+<!-- Boring mode: same data, plain semantics -->
+<div id="boring">
+  <h1>Kracked Devs — versi bosan</h1>
+  <p>Mode tanpa animasi. Tekan Esc untuk balik ke kedai mamak.</p>
+  <h2>Pautan</h2>
+  <ul>
+    <li><a href="https://krackeddevs.com/events">Events</a></li><li><a href="https://krackeddevs.com/code/bounty">Bounty</a></li>
+    <li><a href="https://krackeddevs.com/leaderboard">Leaderboard</a></li><li><a href="https://krackeddevs.com/raid">Raid</a></li>
+    <li><a href="https://krackeddevs.com/guilds">Guilds</a></li><li><a href="https://krackeddevs.com/map">Peta</a></li>
+  </ul>
+  <h2>Top XP</h2><ol id="bXp"></ol>
+  <h2>Top bounty hunter</h2><ol id="bHunt"></ol>
+  <h2>Events</h2><ul id="bEv"></ul>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.js"></script>
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const RM = n => "RM" + Number(n).toLocaleString("en-MY");
+const KD = {};
+
+// ── audio: thermal printer whirr + swat ──
+let ac;
+function audio(){ ac ??= new (window.AudioContext || window.webkitAudioContext)(); return ac; }
+function noise(dur, freq, gain){
+  const a = audio(), n = a.createBuffer(1, a.sampleRate * dur, a.sampleRate), d = n.getChannelData(0);
+  for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * (0.6 + 0.4 * Math.sin(i / 40));
+  const s = a.createBufferSource(), f = a.createBiquadFilter(), g = a.createGain();
+  s.buffer = n; f.type = "bandpass"; f.frequency.value = freq; f.Q.value = 2; g.gain.value = gain;
+  g.gain.exponentialRampToValueAtTime(0.001, a.currentTime + dur);
+  s.connect(f).connect(g).connect(a.destination); s.start();
+}
+const whirr = () => noise(0.09, 2400, 0.25);
+const pap = () => noise(0.12, 300, 0.9);
+
+// ── load the snapshot — loud if missing ──
+async function load(){
+  const files = ["events","leaderboard","leaderboard-top-hunters","leaderboard-active-contributors"];
+  const res = await Promise.all(files.map(f => fetch(`data/${f}.json`).then(r => {
+    if (!r.ok) throw new Error(`data/${f}.json → HTTP ${r.status}`); return r.json(); })));
+  KD.events = res[0].events; KD.xp = res[1].data; KD.hunters = res[2].data; KD.active = res[3].data;
+  KD.snapAt = res[1].snapshot_at || res[0].generated_at;
+}
+
+// ── TV ──
+function race(){
+  const top = [...KD.active].sort((a,b) => b.github_commits_30d - a.github_commits_30d).slice(0, 8);
+  const max = top[0].github_commits_30d;
+  $("#raceRows").innerHTML = top.map((p,i) => `<div class="row"><span class="name">${i+1}. ${esc(p.username)}</span><div><div class="bar" data-w="${p.github_commits_30d / max * 100}"></div></div><span>${p.github_commits_30d}</span></div>`).join("");
+  requestAnimationFrame(() => document.querySelectorAll(".race .bar").forEach(b => b.style.width = b.dataset.w + "%"));
+  const lines = [
+    `GOLLL! ${top[0].username} ${top[0].github_commits_30d} commit sebulan. Tidur bila?`,
+    `${top[1].username} kejar dari belakang, ${top[0].github_commits_30d - top[1].github_commits_30d} commit lagi!`,
+    `Pengadil semak git log... sah, bukan commit "fix typo" semua.`,
+    `${top[2].username} main bertahan, push setiap malam.`,
+    `Jumlah commit liga bulan ni: ${KD.active.reduce((s,p) => s + p.github_commits_30d, 0).toLocaleString()}.`,
+  ];
+  let i = 0; $("#commentary").textContent = lines[0];
+  setInterval(() => $("#commentary").textContent = lines[++i % lines.length], 4200);
+}
+function weather(){
+  const byState = {};
+  for (const h of KD.hunters) {
+    const parts = (h.location || "").split(",").map(s => s.trim()).filter(Boolean);
+    const st = parts.length >= 2 ? parts[parts.length - 2] : null;
+    if (!st || !h.totalEarnings) continue;
+    byState[st] ??= { rm: 0, wins: 0 }; byState[st].rm += h.totalEarnings; byState[st].wins += h.totalWins;
+  }
+  const kind = rm => rm >= 1000 ? "⛈ ribut petir bounty" : rm >= 300 ? "🌧 hujan RM lebat" : "🌦 renyai-renyai";
+  const rows = Object.entries(byState).sort((a,b) => b[1].rm - a[1].rm);
+  $("#presenter").textContent = rows.length
+    ? `"Selamat pagi. Kawasan paling panas malam ni: ${rows[0][0]}, ${RM(rows[0][1].rm)} dah turun."`
+    : `"Malam ni langit cerah. Tiada bounty dilaporkan."`;
+  $("#wxMap").innerHTML = rows.slice(0, 10).map(([s,v]) => `<div>${esc(s)}: ${kind(v.rm)} <span style="color:var(--amber)">${RM(v.rm)}</span></div>`).join("")
+    + `<div style="grid-column:1/-1;color:#9fb3a6;margin-top:6px">* lokasi ikut profil hunter yang isi lokasi sahaja</div>`;
+}
+function news(){
+  const ev = [...KD.events].sort((a,b) => b.start_date.localeCompare(a.start_date));
+  const d = s => new Date(s).toLocaleDateString("ms-MY", { day:"numeric", month:"short", timeZone:"Asia/Kuala_Lumpur" });
+  $("#newsList").innerHTML = ev.map(e => `<li>${d(e.start_date)} · <a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title)}</a>${e.status === "completed" ? " ✓" : " 🔴"}</li>`).join("");
+  $("#ticker").textContent = ev.map(e => `${d(e.start_date)} — ${e.title} (${e.is_online ? "online" : e.location})`).join("   ★   ");
+  $("#pEvents").textContent = KD.events.length + " sesi";
+}
+function tvControls(){
+  const set = ch => {
+    $("#static").style.display = "block"; whirr();
+    setTimeout(() => { $("#static").style.display = "none"; }, 220);
+    document.querySelectorAll(".ch").forEach(c => c.classList.toggle("on", c.id === "ch" + ch));
+    document.querySelectorAll(".remote [data-ch]").forEach(b => b.classList.toggle("on", b.dataset.ch === String(ch)));
+    $("#osd").textContent = "CH " + ch;
+  };
+  document.querySelectorAll(".remote button").forEach(b => b.onclick = () => {
+    if (b.dataset.ch === "kick") { const tv = $(".tv"); tv.animate([{transform:"rotate(0)"},{transform:"rotate(-2deg)"},{transform:"rotate(2deg)"},{transform:"rotate(0)"}], {duration:300}); pap(); set(1 + Math.floor(Math.random() * 3)); return; }
+    set(b.dataset.ch);
+  });
+}
+function raidClock(){
+  // Raid = Sunday 21:00 MYT (UTC+8) = Sunday 13:00 UTC
+  const next = () => { const n = new Date(), t = new Date(n);
+    t.setUTCHours(13, 0, 0, 0); t.setUTCDate(t.getUTCDate() + ((7 - t.getUTCDay()) % 7));
+    if (t <= n) t.setUTCDate(t.getUTCDate() + 7); return t; };
+  const tick = () => { const s = Math.floor((next() - new Date()) / 1000);
+    const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60;
+    $("#raidCd").textContent = `${h}j ${String(m).padStart(2,"0")}m ${String(x).padStart(2,"0")}s`; };
+  tick(); setInterval(tick, 1000);
+}
+
+// ── dev card ──
+const ELEMENTS = { WATER:"💧", FIRE:"🔥", EARTH:"🪨", VOLT:"⚡" };
+function serial(name){ let h = 0; for (const c of name) h = (h * 31 + c.charCodeAt(0)) >>> 0;
+  return "KD-" + h.toString(36).toUpperCase().slice(0,4).padEnd(4,"X") + "·" + String(h % 97).padStart(2,"0"); }
+function devcard(c){
+  return `<div class="devcard ${c.element}">
+    <div class="top"><span>KrackedDevs // ${esc(c.title)}</span><span>${ELEMENTS[c.element]} ${c.element}</span></div>
+    <div class="nm">${esc(c.name)}</div>
+    <div class="pic" style="${c.avatar ? `background-image:url('${esc(c.avatar)}')` : ""}">${c.avatar ? "" : ELEMENTS[c.element]}</div>
+    <div class="stats">${c.stats.map(([k,v]) => `<span>${esc(k)}</span><b>${esc(v)}</b>`).join("")}</div>
+    <div class="ser"><span>${serial(c.name)}</span><span>${esc(c.rarity)} · SET 01</span></div></div>`;
+}
+function memberCard(p){
+  const element = ["WATER","FIRE","EARTH","VOLT"][(p.xp + p.username.length) % 4];
+  return { name:p.username, avatar:p.avatar_url, element, title:(p.leaderboard_label || "[OPERATIVE]").replace(/[\[\]]/g,""),
+    rarity: p.rank <= 3 ? "LEGENDARY" : p.rank <= 10 ? "RARE" : "OPERATIVE",
+    stats:[["LVL",p.level],["XP",p.xp.toLocaleString()],["RANK","#"+p.rank],["ROLE",p.developer_role||"-"],["STACK",(p.stack||[]).slice(0,2).join(", ")||"-"]] };
+}
+
+// ── regulars around tables ──
+function tables(){
+  const glasses = ["🧋","☕","🥤","🍵","🧃"], per = 4, out = [];
+  for (let t = 0; t < KD.xp.length; t += per) {
+    const group = KD.xp.slice(t, t + per);
+    const seats = group.map((p,i) => { const a = (i / per) * Math.PI * 2 - Math.PI / 4, r = 46;
+      return `<div class="seat" data-u="${esc(p.username)}" style="left:calc(50% + ${Math.cos(a)*r}% - 31px);top:calc(50% + ${Math.sin(a)*r}% - 31px)">
+        <img loading="lazy" src="${esc(p.avatar_url)}" alt="${esc(p.username)}" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🙂',style:'font-size:30px'}))"><span class="rk">#${p.rank}</span></div>`; }).join("");
+    out.push(`<div class="table"><span class="glass">${glasses[t / per % glasses.length]}</span>${seats}</div>`);
+  }
+  $("#tables").innerHTML = out.join("");
+  const tip = $("#tip");
+  document.querySelectorAll(".seat").forEach(s => {
+    const p = KD.xp.find(x => x.username === s.dataset.u);
+    s.onmouseenter = () => { tip.innerHTML = devcard(memberCard(p)); tip.style.display = "block"; };
+    s.onmousemove = e => { tip.style.left = Math.min(e.clientX + 16, innerWidth - 240) + "px"; tip.style.top = Math.min(e.clientY + 16, innerHeight - 330) + "px"; };
+    s.onmouseleave = () => tip.style.display = "none";
+    s.onclick = () => { $("#who").value = p.username; $("#who").focus(); };
+  });
+  $("#snapAt").textContent = new Date(KD.snapAt).toLocaleString("ms-MY", { timeZone:"Asia/Kuala_Lumpur" });
+}
+
+// ── buku hutang ──
+function ledger(){
+  const paid = KD.hunters.filter(h => h.totalEarnings > 0).sort((a,b) => b.totalEarnings - a.totalEarnings);
+  const total = paid.reduce((s,h) => s + h.totalEarnings, 0);
+  KD.bountyTotal = total; KD.bountyWins = paid.reduce((s,h) => s + h.totalWins, 0);
+  $("#dBounty").textContent = RM(total);
+  $("#ledger").innerHTML = paid.slice(0, 12).map(h => `<div class="ln"><span>${esc(h.username)} <small>(${h.totalWins}x menang)</small></span><span>${RM(h.totalEarnings)} ✔ lunas</span></div>`).join("")
+    + (paid.length > 12 ? `<div class="ln"><span>... ${paid.length - 12} lagi</span><span></span></div>` : "")
+    + `<div class="ln tot"><span>JUMLAH DIBAYAR</span><span>${RM(total)}</span></div>`
+    + `<div class="ln"><a class="blank" href="https://krackeddevs.com/code/bounty" target="_blank" rel="noopener">NAMA ANDA DI SINI — bounty seterusnya</a><span>RM ???</span></div>`;
+}
+
+// ── who's ordering: KD regular, or GitHub stranger ──
+async function lookup(name){
+  const reg = KD.xp.find(p => p.username.toLowerCase() === name.toLowerCase());
+  if (reg) return { kind:"regular", card: memberCard(reg), raw: reg };
+  const r = await fetch(`https://api.github.com/users/${encodeURIComponent(name)}`);
+  if (r.status === 404) return { kind:"unknown" };
+  if (!r.ok) throw new Error(`GitHub API → HTTP ${r.status}${r.status === 403 ? " (had 60 req/jam, cuba lagi nanti)" : ""}`);
+  const u = await r.json();
+  const evR = await fetch(`https://api.github.com/users/${encodeURIComponent(name)}/events/public?per_page=100`);
+  const events = evR.ok ? await evR.json() : [];
+  const pushes = events.filter(e => e.type === "PushEvent").length;
+  const days = new Set(events.map(e => e.created_at.slice(0,10))).size;
+  const element = days >= 7 ? "VOLT" : u.public_repos >= 10 ? "WATER" : u.followers >= 20 ? "FIRE" : "EARTH";
+  const pwr = u.public_repos * 10 + pushes * 3 + u.followers;
+  return { kind:"github", raw:u, pushes, days, card:{ name:u.login, avatar:u.avatar_url, element, title:"NEW RECRUIT", rarity:"BELUM SAH",
+    stats:[["REPO",u.public_repos],["PUSH",pushes+" baru"],["HARI AKTIF",days],["FOLLOWER",u.followers],["PWR*",pwr]] } };
+}
+
+let printing = false;
+async function kira(){
+  if (printing) return;
+  const name = $("#who").value.trim();
+  if (!name) { $("#waiter").textContent = "\"Boss, nama dulu. Tak boleh kira kosong.\""; $("#who").focus(); return; }
+  printing = true; $("#kira").disabled = true; $("#after").style.display = "none";
+  $("#waiter").textContent = "\"Sekejap boss, tengok buku...\"";
+  let who;
+  try { who = await lookup(name); }
+  catch (e) { $("#waiter").textContent = `Error: ${e.message}`; printing = false; $("#kira").disabled = false; return; }
+
+  if (who.kind === "regular") {
+    const p = who.raw, drinks = { WATER:"Teh O Ais", FIRE:"Teh Halia Panas", EARTH:"Kopi O Kaw", VOLT:"Milo Ais Kaw" };
+    $("#waiter").textContent = `"${p.username}! Macam biasa? ${drinks[who.card.element]}, LVL ${p.level}. Duduk, duduk."`;
+  } else if (who.kind === "github") {
+    $("#waiter").textContent = `"Muka baru ni. ${who.raw.public_repos} repo, ${who.days} hari aktif bulan ni. Boleh tahan, boss."`;
+  } else {
+    $("#waiter").textContent = `"'${name}'... tak jumpa dalam buku, GitHub pun takde. Takpe, kad kosong dulu."`;
+    who.card = { name, avatar:null, element:"EARTH", title:"NEW RECRUIT", rarity:"BELUM SAH", stats:[["LVL",0],["XP",0],["STATUS","semua bermula sini"]] };
+  }
+
+  const now = new Date().toLocaleString("ms-MY", { timeZone:"Asia/Kuala_Lumpur" });
+  const upcoming = KD.events.filter(e => e.status !== "completed").length;
+  const commits = KD.active.reduce((s,p) => s + p.github_commits_30d, 0);
+  const L = (a,b) => `<div class="l"><span>${a}</span><span>${b}</span></div>`;
+  const lines = [
+    `<div class="c big">RESTORAN KRACKED MAJU</div>`,
+    `<div class="c">24 JAM · Malaysia</div><div class="c">No. Meja: ${Math.floor(Math.random()*30)+1} · ${esc(now)}</div><hr>`,
+    L("1x Teh Tarik XP", "RM0.00"),
+    L(`   top 30 XP gabung`, KD.xp.reduce((s,p) => s + p.xp, 0).toLocaleString()),
+    L("1x Nasi Lemak Bounty", "RM0.00"),
+    L(`   dibayar kpd hunter`, RM(KD.bountyTotal)),
+    L(`   menang (${KD.bountyWins}x)`, "✔"),
+    L("1x Roti Canai Workshop", "RM0.00"),
+    L(`   event tersenarai`, KD.events.length),
+    L(`   akan datang`, upcoming),
+    L("1x Maggi Raid Ahad", "RM0.00"),
+    L(`   dalam`, $("#raidCd").textContent),
+    L("1x Bola Git (30 hari)", "RM0.00"),
+    L(`   commit liga`, commits.toLocaleString()),
+    `<hr>`,
+    L("Komisen", "0%"),
+    L("Caj servis", "0%"),
+    L("SST", "tak kena"),
+    `<hr><div class="c">— KAD PERMULAAN ANDA —</div>`,
+    devcard(who.card),
+    who.kind === "regular" ? `<div class="c">kad sah · pelanggan tetap #${who.raw.rank}</div>` : `<div class="c">* PWR anggaran dari GitHub awam.<br>Kad sebenar tak boleh beli —<br>kena ship.</div>`,
+    `<hr><div class="l big"><span>TOTAL</span><span>RM0.00</span></div>`,
+    `<div class="bar"></div>`,
+    `<div class="c">Terima kasih boss, datang lagi 🙏</div><div class="c">krackeddevs.com</div>`,
+  ];
+  const rc = $("#receipt"), paper = $("#paper");
+  rc.innerHTML = ""; paper.style.maxHeight = "0px";
+  for (const ln of lines) {
+    rc.insertAdjacentHTML("beforeend", ln); whirr();
+    paper.style.maxHeight = rc.scrollHeight + 40 + "px";
+    await new Promise(r => setTimeout(r, ln.includes("devcard") ? 500 : 120));
+  }
+  paper.style.maxHeight = "none";
+  $("#after").style.display = "flex"; printing = false; $("#kira").disabled = false;
+}
+async function savePng(){
+  if (!window.htmlToImage) { alert("html-to-image tak load (CDN). Screenshot manual dulu, boss."); return; }
+  const url = await htmlToImage.toPng($("#receipt"), { pixelRatio:2, cacheBust:true });
+  Object.assign(document.createElement("a"), { href:url, download:"resit-kracked-maju.png" }).click();
+}
+
+// ── Morris Worm ──
+let kills = 0;
+function lipas(){
+  const el = $("#lipas"); if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  let x, y, vx, vy, alive = false, timer, freeze = 0;
+  const spawn = () => { alive = true; x = Math.random() < .5 ? -50 : innerWidth + 50; y = 80 + Math.random() * (innerHeight - 160);
+    const sp = 1.6 + Math.random() * 2 + kills * .3; const a = Math.atan2(innerHeight/2 - y, innerWidth/2 - x) + (Math.random() - .5);
+    vx = Math.cos(a) * sp; vy = Math.sin(a) * sp; };
+  const step = () => {
+    if (alive && freeze > 0) freeze--;
+    else if (alive) {
+      if (Math.random() < .012) freeze = 30 + Math.random() * 70;
+      if (Math.random() < .03) { const a = Math.atan2(vy, vx) + (Math.random() - .5) * 1.6, sp = Math.hypot(vx, vy); vx = Math.cos(a)*sp; vy = Math.sin(a)*sp; }
+      x += vx; y += vy;
+      if (x < -80 || x > innerWidth + 80 || y < -80 || y > innerHeight + 80) { alive = false; el.style.left = "-100px"; timer = setTimeout(spawn, 2000 + Math.random()*3000); }
+      el.style.left = x + "px"; el.style.top = y + "px"; el.style.transform = `rotate(${Math.atan2(vy, vx) * 180 / Math.PI + 90}deg)`;
+    }
+    requestAnimationFrame(step);
+  };
+  el.onclick = e => { if (!alive) return; alive = false; kills++; pap();
+    const s = $("#splat"); s.textContent = ["PAP!","DUSH!","MAMPUS!","SEGFAULT!"][kills % 4]; s.style.left = e.clientX - 30 + "px"; s.style.top = e.clientY - 20 + "px";
+    s.animate([{opacity:1,transform:"scale(1.4)"},{opacity:0,transform:"scale(.8) translateY(-20px)"}], {duration:700, fill:"forwards"});
+    el.style.left = "-100px";
+    $("#lipasBoard").textContent = `lipas ditepuk: ${kills}` + (kills >= 5 ? " · raid ready 💪" : "");
+    clearTimeout(timer); timer = setTimeout(spawn, 2500 + Math.random()*3000); };
+  timer = setTimeout(spawn, 1500); step();
+}
+
+// ── boring mode ──
+function boring(){
+  $("#bXp").innerHTML = KD.xp.map(p => `<li>${esc(p.username)} — LVL ${p.level}, ${p.xp} XP</li>`).join("");
+  $("#bHunt").innerHTML = KD.hunters.filter(h => h.totalEarnings).map(h => `<li>${esc(h.username)} — ${RM(h.totalEarnings)} (${h.totalWins} menang)</li>`).join("");
+  $("#bEv").innerHTML = KD.events.map(e => `<li><a href="${esc(e.url)}">${esc(e.title)}</a> — ${e.start_date.slice(0,10)}</li>`).join("");
+  const toggle = () => document.body.classList.toggle("boring");
+  $("#escBtn").onclick = toggle;
+  addEventListener("keydown", e => { if (e.key === "Escape") toggle(); });
+}
+
+$("#flip").onclick = () => $("#menu").classList.add("flipped");
+$("#flipBack").onclick = () => $("#menu").classList.remove("flipped");
+$("#kira").onclick = kira;
+$("#who").addEventListener("keydown", e => { if (e.key === "Enter") kira(); });
+$("#savePng").onclick = savePng;
+
+load().then(() => {
+  race(); weather(); news(); tvControls(); raidClock(); tables(); ledger(); lipas(); boring();
+  const ageH = (Date.now() - new Date(KD.snapAt)) / 36e5;
+  if (ageH > 24) { const b = $("#banner"); b.style.display = "block"; b.textContent = `📺 TV rosak sikit — data snapshot ${Math.floor(ageH)} jam lepas. Run: bun snapshot.ts`; }
+}).catch(e => { const b = $("#banner"); b.className = "banner err"; b.textContent = `Dapur tutup: ${e.message}. Run "bun snapshot.ts" dalam folder kd-mamak.`; });
+</script>
+</body>
+</html>
