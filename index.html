@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ms">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -181,14 +181,14 @@ footer{text-align:center;color:#8a9a90;font-size:12px;margin-top:60px}
 </head>
 <body>
 <div class="banner" id="banner"></div>
-<button class="esc" id="escBtn" title="Esc">[ESC] mode bosan</button>
+<button class="esc" id="escBtn" title="Esc">[ESC] boring mode</button>
 
 <div id="stall">
   <div class="street">
     <div class="sign">
       <h1>RESTORAN KRACKED <span class="dead">M</span>AJU</h1>
-      <div class="sub">★ 24 JAM ★ SHIP SAMPAI SUBUH ★</div>
-      <div class="tiny">WiFi: <b>krackeddevs</b> · password: <b>shipit123</b> · Est. Malaysia · Builder ecosystem sejak dulu</div>
+      <div class="sub">★ OPEN 24 HOURS ★ SHIPPING TILL DAWN ★</div>
+      <div class="tiny">WiFi: <b>krackeddevs</b> · password: <b>shipit123</b> · Est. Malaysia · Builder ecosystem since forever</div>
     </div>
     <div class="awning"></div>
   </div>
@@ -204,29 +204,29 @@ footer{text-align:center;color:#8a9a90;font-size:12px;margin-top:60px}
             <div class="osd" id="osd">CH 1</div>
             <div class="static" id="static"></div>
             <div class="ch race on" id="ch1">
-              <div><span class="live">LIVE</span>PIALA COMMIT 30 HARI · Liga KD</div>
+              <div><span class="live">LIVE</span>30-DAY COMMIT CUP · KD League</div>
               <div id="raceRows"></div>
-              <div class="commentary" id="commentary">Pengulas sedang minum teh...</div>
+              <div class="commentary" id="commentary">Commentator is sipping teh tarik...</div>
             </div>
             <div class="ch weather" id="ch2">
-              <div><span class="live">2AM</span>RAMALAN CUACA BUILDER</div>
+              <div><span class="live">2AM</span>BUILDER WEATHER FORECAST</div>
               <div class="presenter" id="presenter"></div>
               <div class="map" id="wxMap"></div>
             </div>
             <div class="ch news" id="ch3">
-              <div><span class="live">BERITA</span>APA JADI DEKAT KD</div>
+              <div><span class="live">BERITA</span>WHAT'S COOKING AT KD</div>
               <ul id="newsList"></ul>
               <div class="ticker"><span id="ticker"></span></div>
             </div>
           </div>
         </div>
-        <div class="remote" role="group" aria-label="Alat kawalan jauh TV">
-          <button data-ch="1" class="on">⚽ Bola Git</button>
-          <button data-ch="2">⛈ Cuaca</button>
-          <button data-ch="3">📰 Berita</button>
-          <button data-ch="kick" title="Tepuk TV">👋 Tepuk TV</button>
+        <div class="remote" role="group" aria-label="TV remote">
+          <button data-ch="1" class="on">⚽ Git Football</button>
+          <button data-ch="2">⛈ Weather</button>
+          <button data-ch="3">📰 News</button>
+          <button data-ch="kick" title="Smack the TV">👋 Smack TV</button>
         </div>
-        <div class="raidclock">Lipas besar (Morris Worm) dijangka keluar dalam <b id="raidCd">--</b> · <a href="https://krackeddevs.com/raid" target="_blank" rel="noopener">/raid</a></div>
+        <div class="raidclock">Giant lipas (Morris Worm) spawns in <b id="raidCd">--</b> · <a href="https://krackeddevs.com/raid" target="_blank" rel="noopener">/raid</a></div>
       </div>
 
       <!-- MENU -->
@@ -234,24 +234,24 @@ footer{text-align:center;color:#8a9a90;font-size:12px;margin-top:60px}
         <div class="card">
           <div class="face front">
             <h2>MENU</h2>
-            <a class="dish" href="https://krackeddevs.com/events" target="_blank" rel="noopener"><span><span class="n">Roti Canai Vibe Coding 101</span><br><span class="d">Workshop. Telur? Boleh. Kosong pun sedap.</span></span><span class="p" id="pEvents">RM0</span></a>
-            <a class="dish" href="https://krackeddevs.com/code/bounty" target="_blank" rel="noopener"><span><span class="n">Nasi Lemak Bounty Special</span><br><span class="d">Siap sambal. Hunter dah sapu <b id="dBounty">RM—</b>.</span></span><span class="p">HADIAH</span></a>
-            <a class="dish" href="https://krackeddevs.com/leaderboard" target="_blank" rel="noopener"><span><span class="n">Teh Tarik XP</span><br><span class="d">Tarik tinggi, naik level. Leaderboard panas.</span></span><span class="p">+XP</span></a>
-            <a class="dish" href="https://krackeddevs.com/raid" target="_blank" rel="noopener"><span><span class="n">Maggi Goreng Raid Malam Ahad</span><br><span class="d">9 malam. Semua ahli bantai boss sama-sama.</span></span><span class="p">PVE</span></a>
-            <a class="dish" href="https://krackeddevs.com/guilds" target="_blank" rel="noopener"><span><span class="n">Mee Goreng Guild</span><br><span class="d">25 guild. Hang TuAI: "Vibe Dulu, Debug Kemudian."</span></span><span class="p">JOIN</span></a>
-            <a class="dish" href="https://krackeddevs.com/map" target="_blank" rel="noopener"><span><span class="n">Milo Dinosaur Peta Tech</span><br><span class="d">Dev seluruh Malaysia, Perlis sampai Labuan.</span></span><span class="p">TAPAU</span></a>
-            <a class="dish" href="https://krackeddevs.com/showcase" target="_blank" rel="noopener"><span><span class="n">Murtabak Showcase</span><br><span class="d">Projek yang dah ship. Tebal, berinti.</span></span><span class="p">SHIP</span></a>
-            <button class="flipbtn" id="flip">↻ terbalikkan menu</button>
+            <a class="dish" href="https://krackeddevs.com/events" target="_blank" rel="noopener"><span><span class="n">Roti Canai Vibe Coding 101</span><br><span class="d">Workshops. With egg? Sure. Kosong also sedap.</span></span><span class="p" id="pEvents">RM0</span></a>
+            <a class="dish" href="https://krackeddevs.com/code/bounty" target="_blank" rel="noopener"><span><span class="n">Nasi Lemak Bounty Special</span><br><span class="d">Comes with sambal. Hunters already cleared <b id="dBounty">RM—</b>.</span></span><span class="p">PRIZE</span></a>
+            <a class="dish" href="https://krackeddevs.com/leaderboard" target="_blank" rel="noopener"><span><span class="n">Teh Tarik XP</span><br><span class="d">Pull it high, level up. Leaderboard's hot.</span></span><span class="p">+XP</span></a>
+            <a class="dish" href="https://krackeddevs.com/raid" target="_blank" rel="noopener"><span><span class="n">Maggi Goreng Sunday Night Raid</span><br><span class="d">9pm. Everyone gangs up on the boss together.</span></span><span class="p">PVE</span></a>
+            <a class="dish" href="https://krackeddevs.com/guilds" target="_blank" rel="noopener"><span><span class="n">Mee Goreng Guild</span><br><span class="d">25 guilds. Hang TuAI: "Vibe Dulu, Debug Kemudian."</span></span><span class="p">JOIN</span></a>
+            <a class="dish" href="https://krackeddevs.com/map" target="_blank" rel="noopener"><span><span class="n">Milo Dinosaur Tech Map</span><br><span class="d">Devs all over Malaysia, Perlis to Labuan.</span></span><span class="p">TAPAU</span></a>
+            <a class="dish" href="https://krackeddevs.com/showcase" target="_blank" rel="noopener"><span><span class="n">Murtabak Showcase</span><br><span class="d">Projects that actually shipped. Thick, well-filled.</span></span><span class="p">SHIP</span></a>
+            <button class="flipbtn" id="flip">↻ flip the menu</button>
           </div>
           <div class="face back">
-            <h2 style="color:#777">MENU LAMA</h2>
+            <h2 style="color:#777">OLD MENU</h2>
             <div class="old">
               <div>01 · Learn.</div><div>02 · Build.</div><div>03 · Ship.</div>
               <div>Three ways into KD</div><div>Partner logo wall</div><div>Cafe &amp; Co-working (coming soon)</div>
               <svg class="strike" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M3 8 L97 92 M97 10 L4 90" stroke="#d7263d" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
             </div>
-            <div class="scrawl">menu lama — dah tak jual 🙅</div>
-            <button class="flipbtn" id="flipBack">↻ balik menu baru</button>
+            <div class="scrawl">old menu — not serving this anymore 🙅</div>
+            <button class="flipbtn" id="flipBack">↻ back to the new menu</button>
           </div>
         </div>
       </div>
@@ -259,27 +259,27 @@ footer{text-align:center;color:#8a9a90;font-size:12px;margin-top:60px}
 
     <!-- REGULARS -->
     <section class="block" aria-labelledby="regLbl">
-      <span class="label" id="regLbl">PELANGGAN TETAP · TOP 30 XP</span>
-      <p style="margin:8px 0 0">Duduk sini tiap malam. Hover untuk tengok kad. Snapshot: <span id="snapAt">—</span></p>
+      <span class="label" id="regLbl">THE REGULARS · TOP 30 XP</span>
+      <p style="margin:8px 0 0">Here every night. Hover to see their card. Snapshot: <span id="snapAt">—</span></p>
       <div class="tables" id="tables"></div>
     </section>
 
     <!-- LEDGER -->
     <section class="block" aria-labelledby="ledLbl">
-      <span class="label" id="ledLbl">BUKU HUTANG · BOUNTY HUNTER</span>
-      <p style="margin:8px 0 0">Bukan hutang. Ini duit yang KD dah bayar kepada hunter.</p>
+      <span class="label" id="ledLbl">BUKU HUTANG (THE TAB) · BOUNTY HUNTERS</span>
+      <p style="margin:8px 0 0">Not debts — money KD has already paid out to hunters.</p>
       <div class="ledger" id="ledger"></div>
     </section>
 
     <!-- ORDER -->
     <section class="block" aria-labelledby="ordLbl">
-      <span class="label" id="ordLbl">ORDER DI KAUNTER</span>
+      <span class="label" id="ordLbl">ORDER AT THE COUNTER</span>
       <div class="counter">
         <div class="order">
-          <div class="boss">"Boss, nama apa? Username KD atau GitHub."</div>
-          <input id="who" placeholder="cth: Juxtapo, torvalds..." autocomplete="off" spellcheck="false">
+          <div class="boss">"Boss, what's your name? KD or GitHub username."</div>
+          <input id="who" placeholder="e.g. Juxtapo, torvalds..." autocomplete="off" spellcheck="false">
           <div class="row">
-            <button class="kira" id="kira">BOSS, KIRA!</button>
+            <button class="kira" id="kira" title="mamak for: boss, the bill!">BOSS, KIRA!</button>
           </div>
           <div class="waiter" id="waiter"></div>
         </div>
@@ -287,20 +287,20 @@ footer{text-align:center;color:#8a9a90;font-size:12px;margin-top:60px}
           <div class="printer"></div>
           <div class="paper" id="paper"><div class="receipt" id="receipt"></div></div>
           <div class="after" id="after">
-            <button id="savePng">💾 Simpan resit (PNG)</button>
-            <a class="join" href="https://krackeddevs.com" target="_blank" rel="noopener">Masuk KD betul-betul →</a>
+            <button id="savePng">💾 Save receipt (PNG)</button>
+            <a class="join" href="https://krackeddevs.com" target="_blank" rel="noopener">Join KD for real →</a>
           </div>
         </div>
       </div>
     </section>
 
-    <footer>Konsep untuk bounty "Reimagine our landing page" Kracked Devs · bukan laman rasmi · data dari API awam KD (snapshot)<br>
-      Dibuat oleh Juxtapo &amp; Celeste, pukul 2 pagi, dengan teh o ais.</footer>
+    <footer>Concept entry for the Kracked Devs "Reimagine our landing page" bounty · unofficial · data from KD's public API (snapshot)<br>
+      Made by Juxtapo &amp; Celeste at 2am, fuelled by teh o ais.</footer>
   </main>
 </div>
 
 <!-- Morris Worm, the cockroach -->
-<div id="lipas" title="Morris Worm — tepuk!" role="button" aria-label="Lipas Morris Worm">
+<div id="lipas" title="Morris Worm — swat it!" role="button" aria-label="Morris Worm cockroach">
   <svg viewBox="0 0 60 60"><g fill="#5b2c12" stroke="#2c1407" stroke-width="1.2">
     <path d="M12 22 L2 14 M12 30 L1 30 M12 38 L2 46 M48 22 L58 14 M48 30 L59 30 M48 38 L58 46" stroke-width="2.2" fill="none"/>
     <ellipse cx="30" cy="33" rx="15" ry="21"/><ellipse cx="30" cy="12" rx="9" ry="7" fill="#3d1d0b"/>
@@ -308,19 +308,19 @@ footer{text-align:center;color:#8a9a90;font-size:12px;margin-top:60px}
     <path d="M30 18 L30 52" stroke="#2c1407"/><text x="30" y="38" font-size="7" fill="#ffb37a" stroke="none" text-anchor="middle" font-family="monospace">MW</text></g></svg>
 </div>
 <div id="splat"></div>
-<div class="lipasboard" id="lipasBoard">lipas ditepuk: 0</div>
+<div class="lipasboard" id="lipasBoard">lipas swatted: 0</div>
 
 <div class="tip" id="tip"></div>
 
 <!-- Boring mode: same data, plain semantics -->
 <div id="boring">
-  <h1>Kracked Devs — versi bosan</h1>
-  <p>Mode tanpa animasi. Tekan Esc untuk balik ke kedai mamak.</p>
-  <h2>Pautan</h2>
+  <h1>Kracked Devs — boring version</h1>
+  <p>No animations. Press Esc to go back to the mamak.</p>
+  <h2>Links</h2>
   <ul>
     <li><a href="https://krackeddevs.com/events">Events</a></li><li><a href="https://krackeddevs.com/code/bounty">Bounty</a></li>
     <li><a href="https://krackeddevs.com/leaderboard">Leaderboard</a></li><li><a href="https://krackeddevs.com/raid">Raid</a></li>
-    <li><a href="https://krackeddevs.com/guilds">Guilds</a></li><li><a href="https://krackeddevs.com/map">Peta</a></li>
+    <li><a href="https://krackeddevs.com/guilds">Guilds</a></li><li><a href="https://krackeddevs.com/map">Map</a></li>
   </ul>
   <h2>Top XP</h2><ol id="bXp"></ol>
   <h2>Top bounty hunter</h2><ol id="bHunt"></ol>
@@ -364,11 +364,11 @@ function race(){
   $("#raceRows").innerHTML = top.map((p,i) => `<div class="row"><span class="name">${i+1}. ${esc(p.username)}</span><div><div class="bar" data-w="${p.github_commits_30d / max * 100}"></div></div><span>${p.github_commits_30d}</span></div>`).join("");
   requestAnimationFrame(() => document.querySelectorAll(".race .bar").forEach(b => b.style.width = b.dataset.w + "%"));
   const lines = [
-    `GOLLL! ${top[0].username} ${top[0].github_commits_30d} commit sebulan. Tidur bila?`,
-    `${top[1].username} kejar dari belakang, ${top[0].github_commits_30d - top[1].github_commits_30d} commit lagi!`,
-    `Pengadil semak git log... sah, bukan commit "fix typo" semua.`,
-    `${top[2].username} main bertahan, push setiap malam.`,
-    `Jumlah commit liga bulan ni: ${KD.active.reduce((s,p) => s + p.github_commits_30d, 0).toLocaleString()}.`,
+    `GOOOAL! ${top[0].username} ${top[0].github_commits_30d} commits in 30 days. Do they even sleep?`,
+    `${top[1].username} chasing from behind, ${top[0].github_commits_30d - top[1].github_commits_30d} commits to go!`,
+    `Referee checks the git log... confirmed, not all "fix typo".`,
+    `${top[2].username} parks the bus, pushes every night.`,
+    `Total league commits this month: ${KD.active.reduce((s,p) => s + p.github_commits_30d, 0).toLocaleString()}.`,
   ];
   let i = 0; $("#commentary").textContent = lines[0];
   setInterval(() => $("#commentary").textContent = lines[++i % lines.length], 4200);
@@ -381,20 +381,20 @@ function weather(){
     if (!st || !h.totalEarnings) continue;
     byState[st] ??= { rm: 0, wins: 0 }; byState[st].rm += h.totalEarnings; byState[st].wins += h.totalWins;
   }
-  const kind = rm => rm >= 1000 ? "⛈ ribut petir bounty" : rm >= 300 ? "🌧 hujan RM lebat" : "🌦 renyai-renyai";
+  const kind = rm => rm >= 1000 ? "⛈ bounty thunderstorm" : rm >= 300 ? "🌧 heavy RM showers" : "🌦 light drizzle";
   const rows = Object.entries(byState).sort((a,b) => b[1].rm - a[1].rm);
   $("#presenter").textContent = rows.length
-    ? `"Selamat pagi. Kawasan paling panas malam ni: ${rows[0][0]}, ${RM(rows[0][1].rm)} dah turun."`
-    : `"Malam ni langit cerah. Tiada bounty dilaporkan."`;
+    ? `"Good morning. Hottest zone tonight: ${rows[0][0]}, ${RM(rows[0][1].rm)} already poured down."`
+    : `"Clear skies tonight. No bounties reported."`;
   $("#wxMap").innerHTML = rows.slice(0, 10).map(([s,v]) => `<div>${esc(s)}: ${kind(v.rm)} <span style="color:var(--amber)">${RM(v.rm)}</span></div>`).join("")
-    + `<div style="grid-column:1/-1;color:#9fb3a6;margin-top:6px">* lokasi ikut profil hunter yang isi lokasi sahaja</div>`;
+    + `<div style="grid-column:1/-1;color:#9fb3a6;margin-top:6px">* only hunters who set a location on their profile</div>`;
 }
 function news(){
   const ev = [...KD.events].sort((a,b) => b.start_date.localeCompare(a.start_date));
-  const d = s => new Date(s).toLocaleDateString("ms-MY", { day:"numeric", month:"short", timeZone:"Asia/Kuala_Lumpur" });
+  const d = s => new Date(s).toLocaleDateString("en-MY", { day:"numeric", month:"short", timeZone:"Asia/Kuala_Lumpur" });
   $("#newsList").innerHTML = ev.map(e => `<li>${d(e.start_date)} · <a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title)}</a>${e.status === "completed" ? " ✓" : " 🔴"}</li>`).join("");
   $("#ticker").textContent = ev.map(e => `${d(e.start_date)} — ${e.title} (${e.is_online ? "online" : e.location})`).join("   ★   ");
-  $("#pEvents").textContent = KD.events.length + " sesi";
+  $("#pEvents").textContent = KD.events.length + " sessions";
 }
 function tvControls(){
   const set = ch => {
@@ -416,7 +416,7 @@ function raidClock(){
     if (t <= n) t.setUTCDate(t.getUTCDate() + 7); return t; };
   const tick = () => { const s = Math.floor((next() - new Date()) / 1000);
     const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60;
-    $("#raidCd").textContent = `${h}j ${String(m).padStart(2,"0")}m ${String(x).padStart(2,"0")}s`; };
+    $("#raidCd").textContent = `${h}h ${String(m).padStart(2,"0")}m ${String(x).padStart(2,"0")}s`; };
   tick(); setInterval(tick, 1000);
 }
 
@@ -458,7 +458,7 @@ function tables(){
     s.onmouseleave = () => tip.style.display = "none";
     s.onclick = () => { $("#who").value = p.username; $("#who").focus(); };
   });
-  $("#snapAt").textContent = new Date(KD.snapAt).toLocaleString("ms-MY", { timeZone:"Asia/Kuala_Lumpur" });
+  $("#snapAt").textContent = new Date(KD.snapAt).toLocaleString("en-MY", { timeZone:"Asia/Kuala_Lumpur" });
 }
 
 // ── buku hutang ──
@@ -467,10 +467,10 @@ function ledger(){
   const total = paid.reduce((s,h) => s + h.totalEarnings, 0);
   KD.bountyTotal = total; KD.bountyWins = paid.reduce((s,h) => s + h.totalWins, 0);
   $("#dBounty").textContent = RM(total);
-  $("#ledger").innerHTML = paid.slice(0, 12).map(h => `<div class="ln"><span>${esc(h.username)} <small>(${h.totalWins}x menang)</small></span><span>${RM(h.totalEarnings)} ✔ lunas</span></div>`).join("")
-    + (paid.length > 12 ? `<div class="ln"><span>... ${paid.length - 12} lagi</span><span></span></div>` : "")
-    + `<div class="ln tot"><span>JUMLAH DIBAYAR</span><span>${RM(total)}</span></div>`
-    + `<div class="ln"><a class="blank" href="https://krackeddevs.com/code/bounty" target="_blank" rel="noopener">NAMA ANDA DI SINI — bounty seterusnya</a><span>RM ???</span></div>`;
+  $("#ledger").innerHTML = paid.slice(0, 12).map(h => `<div class="ln"><span>${esc(h.username)} <small>(${h.totalWins}x won)</small></span><span>${RM(h.totalEarnings)} ✔ paid</span></div>`).join("")
+    + (paid.length > 12 ? `<div class="ln"><span>... ${paid.length - 12} more</span><span></span></div>` : "")
+    + `<div class="ln tot"><span>TOTAL PAID OUT</span><span>${RM(total)}</span></div>`
+    + `<div class="ln"><a class="blank" href="https://krackeddevs.com/code/bounty" target="_blank" rel="noopener">YOUR NAME HERE — next bounty</a><span>RM ???</span></div>`;
 }
 
 // ── who's ordering: KD regular, or GitHub stranger ──
@@ -479,7 +479,7 @@ async function lookup(name){
   if (reg) return { kind:"regular", card: memberCard(reg), raw: reg };
   const r = await fetch(`https://api.github.com/users/${encodeURIComponent(name)}`);
   if (r.status === 404) return { kind:"unknown" };
-  if (!r.ok) throw new Error(`GitHub API → HTTP ${r.status}${r.status === 403 ? " (had 60 req/jam, cuba lagi nanti)" : ""}`);
+  if (!r.ok) throw new Error(`GitHub API → HTTP ${r.status}${r.status === 403 ? " (60 req/hour limit, try again later)" : ""}`);
   const u = await r.json();
   const evR = await fetch(`https://api.github.com/users/${encodeURIComponent(name)}/events/public?per_page=100`);
   const events = evR.ok ? await evR.json() : [];
@@ -487,60 +487,60 @@ async function lookup(name){
   const days = new Set(events.map(e => e.created_at.slice(0,10))).size;
   const element = days >= 7 ? "VOLT" : u.public_repos >= 10 ? "WATER" : u.followers >= 20 ? "FIRE" : "EARTH";
   const pwr = u.public_repos * 10 + pushes * 3 + u.followers;
-  return { kind:"github", raw:u, pushes, days, card:{ name:u.login, avatar:u.avatar_url, element, title:"NEW RECRUIT", rarity:"BELUM SAH",
-    stats:[["REPO",u.public_repos],["PUSH",pushes+" baru"],["HARI AKTIF",days],["FOLLOWER",u.followers],["PWR*",pwr]] } };
+  return { kind:"github", raw:u, pushes, days, card:{ name:u.login, avatar:u.avatar_url, element, title:"NEW RECRUIT", rarity:"UNVERIFIED",
+    stats:[["REPO",u.public_repos],["PUSH",pushes+" recent"],["ACTIVE DAYS",days],["FOLLOWER",u.followers],["PWR*",pwr]] } };
 }
 
 let printing = false;
 async function kira(){
   if (printing) return;
   const name = $("#who").value.trim();
-  if (!name) { $("#waiter").textContent = "\"Boss, nama dulu. Tak boleh kira kosong.\""; $("#who").focus(); return; }
+  if (!name) { $("#waiter").textContent = "\"Name first, boss. Can't bill a blank.\""; $("#who").focus(); return; }
   printing = true; $("#kira").disabled = true; $("#after").style.display = "none";
-  $("#waiter").textContent = "\"Sekejap boss, tengok buku...\"";
+  $("#waiter").textContent = "\"One sec boss, checking the book...\"";
   let who;
   try { who = await lookup(name); }
   catch (e) { $("#waiter").textContent = `Error: ${e.message}`; printing = false; $("#kira").disabled = false; return; }
 
   if (who.kind === "regular") {
     const p = who.raw, drinks = { WATER:"Teh O Ais", FIRE:"Teh Halia Panas", EARTH:"Kopi O Kaw", VOLT:"Milo Ais Kaw" };
-    $("#waiter").textContent = `"${p.username}! Macam biasa? ${drinks[who.card.element]}, LVL ${p.level}. Duduk, duduk."`;
+    $("#waiter").textContent = `"${p.username}! The usual? ${drinks[who.card.element]}, LVL ${p.level}. Sit, sit."`;
   } else if (who.kind === "github") {
-    $("#waiter").textContent = `"Muka baru ni. ${who.raw.public_repos} repo, ${who.days} hari aktif bulan ni. Boleh tahan, boss."`;
+    $("#waiter").textContent = `"New face. ${who.raw.public_repos} repo, ${who.days} active days lately. Not bad, boss."`;
   } else {
-    $("#waiter").textContent = `"'${name}'... tak jumpa dalam buku, GitHub pun takde. Takpe, kad kosong dulu."`;
-    who.card = { name, avatar:null, element:"EARTH", title:"NEW RECRUIT", rarity:"BELUM SAH", stats:[["LVL",0],["XP",0],["STATUS","semua bermula sini"]] };
+    $("#waiter").textContent = `"'${name}'... not in the book, not on GitHub either. No worries, blank card for now."`;
+    who.card = { name, avatar:null, element:"EARTH", title:"NEW RECRUIT", rarity:"UNVERIFIED", stats:[["LVL",0],["XP",0],["STATUS","everyone starts here"]] };
   }
 
-  const now = new Date().toLocaleString("ms-MY", { timeZone:"Asia/Kuala_Lumpur" });
+  const now = new Date().toLocaleString("en-MY", { timeZone:"Asia/Kuala_Lumpur" });
   const upcoming = KD.events.filter(e => e.status !== "completed").length;
   const commits = KD.active.reduce((s,p) => s + p.github_commits_30d, 0);
   const L = (a,b) => `<div class="l"><span>${a}</span><span>${b}</span></div>`;
   const lines = [
     `<div class="c big">RESTORAN KRACKED MAJU</div>`,
-    `<div class="c">24 JAM · Malaysia</div><div class="c">No. Meja: ${Math.floor(Math.random()*30)+1} · ${esc(now)}</div><hr>`,
+    `<div class="c">OPEN 24H · Malaysia</div><div class="c">Table no: ${Math.floor(Math.random()*30)+1} · ${esc(now)}</div><hr>`,
     L("1x Teh Tarik XP", "RM0.00"),
-    L(`   top 30 XP gabung`, KD.xp.reduce((s,p) => s + p.xp, 0).toLocaleString()),
+    L(`   top 30 XP combined`, KD.xp.reduce((s,p) => s + p.xp, 0).toLocaleString()),
     L("1x Nasi Lemak Bounty", "RM0.00"),
-    L(`   dibayar kpd hunter`, RM(KD.bountyTotal)),
-    L(`   menang (${KD.bountyWins}x)`, "✔"),
+    L(`   paid to hunters`, RM(KD.bountyTotal)),
+    L(`   wins (${KD.bountyWins}x)`, "✔"),
     L("1x Roti Canai Workshop", "RM0.00"),
-    L(`   event tersenarai`, KD.events.length),
-    L(`   akan datang`, upcoming),
-    L("1x Maggi Raid Ahad", "RM0.00"),
-    L(`   dalam`, $("#raidCd").textContent),
-    L("1x Bola Git (30 hari)", "RM0.00"),
-    L(`   commit liga`, commits.toLocaleString()),
+    L(`   events listed`, KD.events.length),
+    L(`   upcoming`, upcoming),
+    L("1x Maggi Sunday Raid", "RM0.00"),
+    L(`   starts in`, $("#raidCd").textContent),
+    L("1x Git Football (30d)", "RM0.00"),
+    L(`   league commits`, commits.toLocaleString()),
     `<hr>`,
-    L("Komisen", "0%"),
-    L("Caj servis", "0%"),
-    L("SST", "tak kena"),
-    `<hr><div class="c">— KAD PERMULAAN ANDA —</div>`,
+    L("Commission", "0%"),
+    L("Service charge", "0%"),
+    L("SST", "none"),
+    `<hr><div class="c">— YOUR STARTER CARD —</div>`,
     devcard(who.card),
-    who.kind === "regular" ? `<div class="c">kad sah · pelanggan tetap #${who.raw.rank}</div>` : `<div class="c">* PWR anggaran dari GitHub awam.<br>Kad sebenar tak boleh beli —<br>kena ship.</div>`,
+    who.kind === "regular" ? `<div class="c">verified card · regular #${who.raw.rank}</div>` : `<div class="c">* PWR estimated from public GitHub.<br>Real cards can't be bought —<br>you have to ship.</div>`,
     `<hr><div class="l big"><span>TOTAL</span><span>RM0.00</span></div>`,
     `<div class="bar"></div>`,
-    `<div class="c">Terima kasih boss, datang lagi 🙏</div><div class="c">krackeddevs.com</div>`,
+    `<div class="c">Thank you boss, come again 🙏</div><div class="c">krackeddevs.com</div>`,
   ];
   const rc = $("#receipt"), paper = $("#paper");
   rc.innerHTML = ""; paper.style.maxHeight = "0px";
@@ -553,7 +553,7 @@ async function kira(){
   $("#after").style.display = "flex"; printing = false; $("#kira").disabled = false;
 }
 async function savePng(){
-  if (!window.htmlToImage) { alert("html-to-image tak load (CDN). Screenshot manual dulu, boss."); return; }
+  if (!window.htmlToImage) { alert("html-to-image failed to load (CDN). Take a screenshot instead, boss."); return; }
   const url = await htmlToImage.toPng($("#receipt"), { pixelRatio:2, cacheBust:true });
   Object.assign(document.createElement("a"), { href:url, download:"resit-kracked-maju.png" }).click();
 }
@@ -578,10 +578,10 @@ function lipas(){
     requestAnimationFrame(step);
   };
   el.onclick = e => { if (!alive) return; alive = false; kills++; pap();
-    const s = $("#splat"); s.textContent = ["PAP!","DUSH!","MAMPUS!","SEGFAULT!"][kills % 4]; s.style.left = e.clientX - 30 + "px"; s.style.top = e.clientY - 20 + "px";
+    const s = $("#splat"); s.textContent = ["PAP!","DUSH!","REKT!","SEGFAULT!"][kills % 4]; s.style.left = e.clientX - 30 + "px"; s.style.top = e.clientY - 20 + "px";
     s.animate([{opacity:1,transform:"scale(1.4)"},{opacity:0,transform:"scale(.8) translateY(-20px)"}], {duration:700, fill:"forwards"});
     el.style.left = "-100px";
-    $("#lipasBoard").textContent = `lipas ditepuk: ${kills}` + (kills >= 5 ? " · raid ready 💪" : "");
+    $("#lipasBoard").textContent = `lipas swatted: ${kills}` + (kills >= 5 ? " · raid ready 💪" : "");
     clearTimeout(timer); timer = setTimeout(spawn, 2500 + Math.random()*3000); };
   timer = setTimeout(spawn, 1500); step();
 }
@@ -589,7 +589,7 @@ function lipas(){
 // ── boring mode ──
 function boring(){
   $("#bXp").innerHTML = KD.xp.map(p => `<li>${esc(p.username)} — LVL ${p.level}, ${p.xp} XP</li>`).join("");
-  $("#bHunt").innerHTML = KD.hunters.filter(h => h.totalEarnings).map(h => `<li>${esc(h.username)} — ${RM(h.totalEarnings)} (${h.totalWins} menang)</li>`).join("");
+  $("#bHunt").innerHTML = KD.hunters.filter(h => h.totalEarnings).map(h => `<li>${esc(h.username)} — ${RM(h.totalEarnings)} (${h.totalWins} wins)</li>`).join("");
   $("#bEv").innerHTML = KD.events.map(e => `<li><a href="${esc(e.url)}">${esc(e.title)}</a> — ${e.start_date.slice(0,10)}</li>`).join("");
   const toggle = () => document.body.classList.toggle("boring");
   $("#escBtn").onclick = toggle;
@@ -605,8 +605,8 @@ $("#savePng").onclick = savePng;
 load().then(() => {
   race(); weather(); news(); tvControls(); raidClock(); tables(); ledger(); lipas(); boring();
   const ageH = (Date.now() - new Date(KD.snapAt)) / 36e5;
-  if (ageH > 24) { const b = $("#banner"); b.style.display = "block"; b.textContent = `📺 TV rosak sikit — data snapshot ${Math.floor(ageH)} jam lepas. Run: bun snapshot.ts`; }
-}).catch(e => { const b = $("#banner"); b.className = "banner err"; b.textContent = `Dapur tutup: ${e.message}. Run "bun snapshot.ts" dalam folder kd-mamak.`; });
+  if (ageH > 24) { const b = $("#banner"); b.style.display = "block"; b.textContent = `📺 TV's a bit rosak — data snapshot is ${Math.floor(ageH)} hours old. Run: bun snapshot.ts`; }
+}).catch(e => { const b = $("#banner"); b.className = "banner err"; b.textContent = `Kitchen closed: ${e.message}. Run "bun snapshot.ts" in the kd-mamak folder.`; });
 </script>
 </body>
 </html>

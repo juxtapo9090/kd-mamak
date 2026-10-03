@@ -13,3 +13,4 @@
 - V1.1 lipas: spawn 1.5s, respawn 2–5s, freezes randomly like a real lipas.
 - V1.2 night wall: dark tiles #1f2a24 + tube light pool + vignette (abang: belakang terlalu terang).
 - V1.3 GitHub Pages: repo juxtapo9090/kd-mamak, Actions snapshot+deploy every 3h.
+- V1.4 English pass (abang will post to KD); mamak words kept: roti canai, teh tarik, lipas, BOSS KIRA!, tapau, buku hutang.
