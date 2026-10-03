@@ -4,6 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Restoran Kracked Maju</title>
+<meta name="description" content="The Kracked Devs landing page as a 2am mamak stall. Live KD data, print your own receipt, swat Morris Worm.">
+<meta property="og:title" content="Restoran Kracked Maju — KD as a 2am mamak">
+<meta property="og:description" content="Live KD data, print your own receipt, swat Morris Worm.">
+<meta property="og:image" content="https://raw.githubusercontent.com/juxtapo9090/kd-mamak/main/shots/1-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍛</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Caveat:wght@500;700&family=Space+Mono:wght@400;700&family=VT323&family=Permanent+Marker&display=swap" rel="stylesheet">
 <style>
@@ -177,24 +183,75 @@ body.boring #boring{display:block}
 body.boring{background:#fff}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 footer{text-align:center;color:#8a9a90;font-size:12px;margin-top:60px}
+
+/* ── V2 flex pass (taste-skill redesign) ── */
+html{scroll-behavior:smooth}
+:focus-visible{outline:3px solid var(--neon);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:12px;top:-60px;z-index:70;background:var(--neon);color:#000;padding:8px 14px;border-radius:6px;font-weight:700;transition:top .2s}
+.skip:focus{top:12px}
+.grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.08;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.street{overflow:hidden}
+.rain{position:absolute;inset:0;pointer-events:none;background-image:repeating-linear-gradient(104deg,#0000 0 26px,#9fd7b31f 26px 27px);
+  background-size:240px 240px;animation:rain .45s linear infinite;-webkit-mask:linear-gradient(#000 30%,#0000);mask:linear-gradient(#000 30%,#0000)}
+@keyframes rain{to{background-position:-60px 240px}}
+.sign,.awning{position:relative;z-index:1}
+.sign h1{letter-spacing:-.01em;line-height:1.02;text-wrap:balance}
+.cta{display:inline-block;margin-top:16px;font-family:"Bungee",cursive;font-size:14px;color:#ffd9d9;text-decoration:none;border:2px solid #ff6a6a;border-radius:6px;padding:7px 16px;
+  box-shadow:0 0 14px #ff3b3b55,inset 0 0 12px #ff3b3b33;text-shadow:0 0 6px #ff3b3b;transition:transform .25s cubic-bezier(.3,1.5,.5,1),box-shadow .25s}
+.cta:hover{transform:translateY(-2px);box-shadow:0 0 26px #ff3b3b99,inset 0 0 18px #ff3b3b55}
+.cta:active{transform:translateY(1px)}
+.torch{position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(460px circle at var(--mx,50%) var(--my,-30%),#ffe9b814,#0000 70%)}
+.shop>.grid,.shop>section,.shop>footer{position:relative;z-index:1}
+.tv{box-shadow:0 34px 60px -16px #020806f0,inset 0 1px 0 #ffffff14,inset 0 0 0 3px #3a3a3a}
+.face{box-shadow:0 28px 50px -16px #020806e6,0 0 60px #f5b5441a}
+.ledger{box-shadow:0 28px 50px -18px #020806e6;transform:rotate(-.5deg)}
+.order{box-shadow:0 28px 50px -18px #020806e6}
+.paper{filter:drop-shadow(0 20px 22px #020806b3)}
+.table{background:repeating-conic-gradient(#ffffff0a 0 2deg,#0000 2deg 5deg),radial-gradient(circle at 40% 35%,#c9d0d3,#8f989d 60%,#4f575b);
+  box-shadow:0 28px 30px -16px #020806f0,inset 0 -8px 14px #0005,inset 0 2px 0 #ffffff30}
+.label{letter-spacing:.05em}
+.remote button,.flipbtn,.after a,.after button,.dish,.kira{transition:transform .22s cubic-bezier(.3,1.5,.5,1),background .2s,box-shadow .2s,filter .2s}
+.remote button:hover{transform:translateY(-1px);background:#404040}
+.dish:hover{transform:translateX(4px)}
+.flipbtn:hover{background:#ffe48a}
+.kira:hover{filter:brightness(1.08)}
+.after a:hover,.after button:hover{transform:translateY(-2px)}
+.race,.receipt,.ledger,.devcard .stats,.raidclock b,.lipasboard,.chalk-s{font-variant-numeric:tabular-nums}
+.boss,h2{text-wrap:balance}
+.chalk{margin:26px auto 0;max-width:520px;background:radial-gradient(circle at 30% 20%,#34413a,#1b221e);border:10px solid #6b4a2b;border-radius:6px;
+  padding:14px 20px 16px;font-family:"Caveat",cursive;color:#eef3ee;font-size:24px;line-height:1.25;transform:rotate(.7deg);
+  box-shadow:0 28px 40px -16px #020806f0,inset 0 0 30px #0006}
+.chalk-h{font-family:"Permanent Marker",cursive;color:#ffd36b;font-size:21px;margin-bottom:4px}
+.chalk a{color:#fff;text-decoration-color:#ffd36b88}
+.chalk-s{display:flex;gap:6px 18px;flex-wrap:wrap;font-size:20px;color:#bfe9cf;margin-top:8px}
+.saveerr{color:#ff9b9b;font-size:13px;text-align:center;margin-top:8px}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.rain{display:none}}
 </style>
 </head>
 <body>
+<a class="skip" href="#ordLbl">Skip to the counter</a>
+<div class="grain" aria-hidden="true"></div>
 <div class="banner" id="banner"></div>
 <button class="esc" id="escBtn" title="Esc">[ESC] boring mode</button>
 
 <div id="stall">
   <div class="street">
+    <div class="rain" aria-hidden="true"></div>
     <div class="sign">
       <h1>RESTORAN KRACKED <span class="dead">M</span>AJU</h1>
       <div class="sub">★ OPEN 24 HOURS ★ SHIPPING TILL DAWN ★</div>
       <div class="tiny">WiFi: <b>krackeddevs</b> · password: <b>shipit123</b> · Est. Malaysia · Builder ecosystem since forever</div>
+      <a class="cta" href="#ordLbl">Order at the counter ↓</a>
     </div>
     <div class="awning"></div>
   </div>
 
   <main class="shop">
     <div class="tube"></div>
+    <div class="torch" id="torch" aria-hidden="true"></div>
     <div class="grid">
       <!-- TV -->
       <div class="tvwrap">
@@ -227,6 +284,11 @@ footer{text-align:center;color:#8a9a90;font-size:12px;margin-top:60px}
           <button data-ch="kick" title="Smack the TV">👋 Smack TV</button>
         </div>
         <div class="raidclock">Giant lipas (Morris Worm) spawns in <b id="raidCd">--</b> · <a href="https://krackeddevs.com/raid" target="_blank" rel="noopener">/raid</a></div>
+        <aside class="chalk" aria-label="Today's specials">
+          <div class="chalk-h">Today's specials</div>
+          <div id="chalkNext">Checking the calendar...</div>
+          <div class="chalk-s" id="chalkStats"></div>
+        </aside>
       </div>
 
       <!-- MENU -->
@@ -290,6 +352,7 @@ footer{text-align:center;color:#8a9a90;font-size:12px;margin-top:60px}
             <button id="savePng">💾 Save receipt (PNG)</button>
             <a class="join" href="https://krackeddevs.com" target="_blank" rel="noopener">Join KD for real →</a>
           </div>
+          <div class="saveerr" id="saveErr" role="status"></div>
         </div>
       </div>
     </section>
@@ -553,7 +616,7 @@ async function kira(){
   $("#after").style.display = "flex"; printing = false; $("#kira").disabled = false;
 }
 async function savePng(){
-  if (!window.htmlToImage) { alert("html-to-image failed to load (CDN). Take a screenshot instead, boss."); return; }
+  if (!window.htmlToImage) { $("#saveErr").textContent = "Save failed: html-to-image didn't load from the CDN. Take a screenshot instead, boss."; return; }
   const url = await htmlToImage.toPng($("#receipt"), { pixelRatio:2, cacheBust:true });
   Object.assign(document.createElement("a"), { href:url, download:"resit-kracked-maju.png" }).click();
 }
@@ -586,6 +649,29 @@ function lipas(){
   timer = setTimeout(spawn, 1500); step();
 }
 
+// ── V2: chalkboard, torch, reveals ──
+function chalk(){
+  const now = new Date().toISOString();
+  const up = KD.events.filter(e => e.status !== "completed" && e.start_date >= now).sort((a,b) => a.start_date.localeCompare(b.start_date));
+  const e = up[0] || [...KD.events].sort((a,b) => b.start_date.localeCompare(a.start_date))[0];
+  const when = new Date(e.start_date).toLocaleDateString("en-MY", { weekday:"short", day:"numeric", month:"short", timeZone:"Asia/Kuala_Lumpur" });
+  $("#chalkNext").innerHTML = (up.length ? "Next up: " : "Last served: ") + `<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title)}</a> · ${when}`;
+  const commits = KD.active.reduce((s,p) => s + p.github_commits_30d, 0);
+  $("#chalkStats").innerHTML = `<span>${KD.xp.length} regulars in</span><span>${RM(KD.bountyTotal)} paid out</span><span>${commits.toLocaleString()} commits / 30d</span>`;
+}
+function torch(){
+  const shop = $(".shop"), t = $("#torch");
+  shop.addEventListener("pointermove", e => { const b = shop.getBoundingClientRect();
+    t.style.setProperty("--mx", (e.clientX - b.left) + "px"); t.style.setProperty("--my", (e.clientY - b.top) + "px"); });
+}
+function reveals(){
+  const els = [...document.querySelectorAll(".tvwrap,.menu,.chalk,section.block .label,.table,.ledger,.counter")];
+  els.forEach(el => { el.classList.add("reveal"); if (el.classList.contains("table")) el.style.transitionDelay = ([...el.parentNode.children].indexOf(el) % 5) * 70 + "ms"; });
+  $(".menu").style.transitionDelay = "120ms";
+  const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add("in"); io.unobserve(x.target); } }), { rootMargin:"0px 0px -8% 0px" });
+  els.forEach(el => io.observe(el));
+}
+
 // ── boring mode ──
 function boring(){
   $("#bXp").innerHTML = KD.xp.map(p => `<li>${esc(p.username)} — LVL ${p.level}, ${p.xp} XP</li>`).join("");
@@ -603,7 +689,7 @@ $("#who").addEventListener("keydown", e => { if (e.key === "Enter") kira(); });
 $("#savePng").onclick = savePng;
 
 load().then(() => {
-  race(); weather(); news(); tvControls(); raidClock(); tables(); ledger(); lipas(); boring();
+  race(); weather(); news(); tvControls(); raidClock(); tables(); ledger(); chalk(); lipas(); boring(); torch(); reveals();
   const ageH = (Date.now() - new Date(KD.snapAt)) / 36e5;
   if (ageH > 24) { const b = $("#banner"); b.style.display = "block"; b.textContent = `📺 TV's a bit rosak — data snapshot is ${Math.floor(ageH)} hours old. Run: bun snapshot.ts`; }
 }).catch(e => { const b = $("#banner"); b.className = "banner err"; b.textContent = `Kitchen closed: ${e.message}. Run "bun snapshot.ts" in the kd-mamak folder.`; });
